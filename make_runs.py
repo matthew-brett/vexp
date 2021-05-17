@@ -28,10 +28,18 @@ def make_run():
     tones2 = np.append(tones2, ['tone_500.wav'] * 5)
     df = pd.DataFrame()
     df['type'] = types
+    df['ready'] = 'ready_clipped.wav'
+    df['post_ready'] = 1250
+    df['set'] = 'set_clipped.wav'
+    df['post_set'] = 1250
+    df['ready'] = 'ready_clipped.wav'
+    df['post_ready'] = 1250
     df['tone1'] = tones1
     df['gap'] = npr.randint(2000, 3000, size=len(df))
     df['tone2'] = tones2
-    df['after'] = 5000
+    df['after'] = 750
+    df['relax'] = 'relax_clipped.wav'
+    df['post_relax'] = 1000
     return df.sample(len(df))
 
 
