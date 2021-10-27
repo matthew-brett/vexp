@@ -23,3 +23,5 @@ python deliver_runs.py run_001.csv
 ```
 
 (where `run_001.csv` is your chosen stimulus file).
+
+Press Ctrl-C to stop the run.
