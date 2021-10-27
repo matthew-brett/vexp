@@ -40,6 +40,7 @@ def get_parser():
 def main():
     parser = get_parser()
     args = parser.parse_args()
+    print('Press Cntl-C to stop the run')
     deliver_run(args.run_fname)
 
 
