@@ -10,7 +10,10 @@ import scipy.io.wavfile as siow
 
 
 def clip_wav(wav_fname, out_fname, clip_length):
-    samplerate, data = siow.read(wav_fname)
+    samplerate, data = siow.read(str(wav_fname))
+    # Scale to max
+    data = data.astype(np.float32)
+    data = data / np.max(np.abs(data))
     if data.ndim == 2:
         data = np.mean(data, axis=1)
     desired_n = int(samplerate * clip_length)
@@ -27,7 +30,7 @@ def get_parser():
                         help='Wav file to clip')
     parser.add_argument('clip_length', type=float,
                         help='Clip length in seconds')
-    parser.add_argument('--out-fname',
+    parser.add_argument('--out-fname', '-o',
                         help='Output filename (default is input with '
                         '"_clipped" suffix')
     return parser
@@ -44,5 +47,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
