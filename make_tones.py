@@ -16,12 +16,11 @@ def make_tone(freq, duration, rate=44100):
     print(freq)
     n_samps = int(rate * secs)
     t = np.linspace(0., secs, n_samps)
-    amplitude = np.iinfo(np.int16).max
-    return amplitude * np.sin(2. * np.pi * freq * t)
+    return np.sin(2. * np.pi * freq * t)
 
 
 def write_tone(fname, cdict, rate=44100):
-    tone = make_tone(rate=rate, **cdict)
+    tone = make_tone(rate=rate, **cdict).astype(np.float32)
     siow.write(fname, rate, tone)
 
 
