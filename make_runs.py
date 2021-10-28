@@ -39,7 +39,11 @@ def make_run():
     df['relax'] = 'relax_clipped.wav'
     df['post_relax'] = 1000
     # Randomize the order of the trials.
-    return df.sample(len(df))
+    df = df.sample(len(df))
+    mid_point = int(len(df) / 2)
+    return pd.concat([df.iloc[:mid_point].append({'type': 'spacebar'},
+                                                 ignore_index=True),
+                      df.iloc[mid_point:]], axis='index')
 
 
 for i in range(1, 11):

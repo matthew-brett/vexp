@@ -18,15 +18,16 @@ import keyboard
 def deliver_run(run_fname):
     run_df = pd.read_csv(run_fname)
     for i, row in run_df.iterrows():
+        if row['type'] == 'spacebar':
+            print('Press space to continue')
+            keyboard.wait(" ")
+            continue
         for v in np.array(row):
             if isinstance(v, str):
                 if op.isfile(v):
                     playsound(v)
             elif isinstance(v, (int, float)):
                 time.sleep(v / 1000)
-        if i == 24:
-            print('Press space to continue')
-            keyboard.wait(" ")
 
 
 def get_parser():
