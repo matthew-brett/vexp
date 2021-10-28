@@ -34,6 +34,14 @@ python deliver_runs.py run_001.csv
 
 (where `run_001.csv` is your chosen stimulus file).
 
+To run a training session:
+
+```
+python deliver_runs.py train_001.csv
+```
+
+(where `train_001.csv` is your chosen stimulus file).
+
 Press Ctrl-C to abort the run.  Otherwise it will continue for the default 50 trials.
 
 At the beginning of the 25th trial, the program will pause and ask you to press Space to continue.
